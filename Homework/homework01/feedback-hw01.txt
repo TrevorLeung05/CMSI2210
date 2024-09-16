@@ -1,0 +1,34 @@
+
+
+Evaluation Criteria ~ homework01
+CMSI 2210 Section 02 Fall 2024
+=================================
+
+SAYHELLO.C
+   file exists          1/1 pt.
+   file compiles        1/1 pt.
+   program runs         1/1 pt.
+   prompts user         1/1 pt.
+   reads input          1/1 pt.
+   displays hello name  1/1 pt.
+SAYHELLO.ASM [optional challenge]
+   file exists
+   file assembles
+   programruns
+GENERAL
+   code style           1/1 pt.
+
+Total possible points 7
+
+========================================================
+
+TOTAL EARNED POINTS:
+   you earned 7/7 which is 100% which is an A-plus
+
+========================================================
+SPECIFIC COMMENTS/FEEDBACK:
+
+Nice work here, looks like everything is working for you.
+
+
+Off to a great start!
