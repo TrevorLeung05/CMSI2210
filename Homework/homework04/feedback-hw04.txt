@@ -1,0 +1,73 @@
+
+
+Evaluation Criteria ~ homework04
+CMSI 2210 Section 02 Fall 2024
+=================================
+
+LOGIC DESIGN
+   Logic Question 1a         10 pts.
+   Logic Question 1b          5 pts.
+   Logic Question 2          10 pts.
+
+REGISTER OPERATIONS
+   Register clear even        2 pts.
+   Register set last 3        2 pts.
+   Reg./8 remainder           2 pts.
+   Reg. set to -1             2 pts.
+   Reg. invert 2 MSBs         2 pts.
+   Register computation       2 pts.
+
+STANLEY/PENGUIN ASSEMBLY
+   Q4 - program 1a            6 pts.
+   Q5 - program 1b           11 pts.
+   Q6 - GCD prog.             5 pts.
+   Q7 - swap frag             3 pts.
+   Q8 - jmp to addr           2 pts.
+
+REGISTER INVESTIGATION
+   Q9a - high level expl.     5 pts.
+   Q9b - Why?                 5 pts.
+
+
+Total possible points        90 points
+
+========================================================
+
+TOTAL EARNED POINTS:
+   you earned 74.0/ 90.0 which is 82.22% which is a B-minus
+
+========================================================
+SPECIFIC COMMENTS/FEEDBACK:
+
+problem 4: this won't work; you aren't loading from the proper port,  you
+   have no variables to hold values for the computation, and adding one to
+   the accumulator will keep it incrementing so that you will never execute
+   the "jz done" instruction so it's an infinite loop.  There is no "HLT"
+   instruction in Stanley/Penguin either.
+
+problem 5: correct assembly of incorrect source program.
+
+problem 6: this is pretty close, but you don't need to worry about the
+   ordering of the values, since the algorithm handles that for you.  Also
+   there is no "JN", "HLT" or "OUT" instruction in the language.  Finally
+   you don't calculate the GCD using subtraction, you use MOD.
+
+problem 7: the first instruction loads the value at 0x30AA into the accumulator
+   so the accumulator value you are trying to swap with is immediately lost.
+
+problem 8: there is no "JGE" instruction in the language.
+
+Not bad but pay attention to what is actually IN the language, as well as the
+LOGIC of the programming flow....
+
+========================================================
+SEMESTER SCORE SO FAR:
+
+   homework01 ~ 100.00% of  5 points =  5.00 points
+   homework02 ~  95.00% of  5 points =  4.75 points
+   homework03 ~  75.68% of  5 points =  3.78 points
+   homework04 ~  82.22% of  5 points =  4.11 points
+                                total: 17.64 out of 20.0 = 88.21%
+                                which is a B-plus
+
+Keep up the good work!
