@@ -1,19 +1,14 @@
 #include <stdio.h>
 
-void checkEndianess() {
+int main() {
     unsigned int x = 1;
     char *c = (char*)&x;
 
     if (*c) {
-        printf("This system is Little-Endian.\n");
+        printf("Little-endian\n");
     } else {
-        printf("This system is Big-Endian.\n");
+        printf("Big-endian\n");
     }
-}
 
-int main() {
-    printf("Checking the Endianness of your system...\n");
-    checkEndianess();
     return 0;
 }
-

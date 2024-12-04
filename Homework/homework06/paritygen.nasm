@@ -1,63 +1,44 @@
 section .data
-    msg db "Parity bit: ", 0
+    byte db 0b01101001  ; Example byte, you can change this value for testing
+
+section .bss
+    count resb 1        ; To store the count of 1 bits
 
 section .text
     global _start
 
 _start:
-    mov al, 0b10101110
-    call paritygen
-    mov eax, 1
-    xor ebx, ebx
-    int 0x80
-
-paritygen:
-    xor ecx, ecx
+    mov al, [byte]      ; Load the byte into AL
+    xor ecx, ecx        ; Clear ECX (bit counter)
+    xor ebx, ebx        ; Clear EBX (1 bit counter)
 
 count_bits:
-    test al, 1
-    jz skip_increment
-    inc ecx
+    test al, 1          ; Test the least significant bit
+    jz no_increment     ; If zero, skip increment
+    inc ebx             ; Increment the 1 bit counter
 
-skip_increment:
-    shr al, 1
-    jnz count_bits
+no_increment:
+    shr al, 1           ; Shift right to process the next bit
+    inc ecx             ; Increment the bit counter
+    cmp ecx, 8          ; Have we processed all 8 bits?
+    jl count_bits       ; If not, repeat
 
-    test ecx, 1
-    jz even_parity
+    ; Determine parity bit
+    mov al, 1           ; Assume parity bit is 1 (odd parity)
+    test bl, 1          ; Check if the count of 1 bits is odd
+    jz print_parity     ; If even, keep parity bit as 1
+    xor al, al          ; If odd, set parity bit to 0
 
-    mov edx, msg
-    call print_string
-    mov dl, '0'
-    call print_char
-    ret
+print_parity:
+    ; Print the parity bit
+    mov rdi, 1          ; File descriptor (stdout)
+    lea rsi, [rsp]      ; Buffer to store the parity bit
+    mov [rsp], al       ; Store the parity bit in the buffer
+    mov rdx, 1          ; Number of bytes to write
+    mov rax, 1          ; sys_write
+    syscall             ; Call kernel
 
-even_parity:
-    mov edx, msg
-    call print_string
-    mov dl, '1'
-    call print_char
-    ret
-
-print_string:
-    mov esi, edx
-    xor ecx, ecx
-print_char_loop:
-    mov al, byte [esi + ecx]
-    test al, al
-    jz done_printing
-    mov ebx, 1
-    mov eax, 4
-    mov edx, 1
-    int 0x80
-    inc ecx
-    jmp print_char_loop
-done_printing:
-    ret
-
-print_char:
-    mov ebx, 1
-    mov eax, 4
-    mov edx, 1
-    int 0x80
-    ret
+    ; Exit program
+    mov rax, 60         ; sys_exit
+    xor rdi, rdi        ; Exit code 0
+    syscall             ; Call kernel
