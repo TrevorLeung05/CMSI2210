@@ -1,7 +1,9 @@
 section .text
-    global find_gcd
+;    global find_gcd
+    global _find_gcd
 
-find_gcd:
+;find_gcd:
+_find_gcd:
     ; Arguments: rdi = num1, rsi = num2
     mov rax, rdi
     mov rbx, rsi

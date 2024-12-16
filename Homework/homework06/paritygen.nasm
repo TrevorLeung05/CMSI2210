@@ -1,14 +1,18 @@
 section .data
-    byte db 0b01101001  ; Example byte, you can change this value for testing
+;    byte db 0b01101001  ; Example byte, you can change this value for testing
+    mbyte db 0b01101001
 
 section .bss
-    count resb 1        ; To store the count of 1 bits
+;    count resb 1        ; To store the count of 1 bits
+    count: resb 1
 
 section .text
-    global _start
+;    global _start
+    global _main
 
-_start:
-    mov al, [byte]      ; Load the byte into AL
+;_start:
+_main:
+    mov al, [rel mbyte]      ; Load the byte into AL
     xor ecx, ecx        ; Clear ECX (bit counter)
     xor ebx, ebx        ; Clear EBX (1 bit counter)
 

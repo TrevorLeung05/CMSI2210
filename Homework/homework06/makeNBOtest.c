@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <assert.h>
-#include "makeNBOC.c"
+//#include "makeNBOC.c"
+#include <stdint.h>
+
+uint32_t make_nbo(uint32_t num);
 
 int main() {
     uint32_t num = 0x12345678;

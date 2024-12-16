@@ -1,0 +1,99 @@
+
+
+Evaluation Criteria ~ homework06
+CMSI 2210 Section all Fall 2023
+=================================
+                                    score
+FINDGCD.NASM                        ------
+   nasm file assembles  [5 pts.]    4 pts.
+   nasm runs            [5 pts.]    4 pts.
+   output correct       [3 pts.]    0 pts.
+GCDFINDER
+   nasm file assembles  [5 pts.]    4 pts.
+   gcdFinder.c compiles [5 pts.]    5 pts.
+   link both files OK   [5 pts.]    5 pts.
+   nasm returns value   [5 pts.]    5 pts.
+   output correct       [3 pts.]    3 pts.
+PARITYGEN
+   nasm file assembles  [5 pts.]    5 pts.
+   nasm runs            [5 pts.]    5 pts.
+   output correct       [3 pts.]    0 pts.
+WHICHENDISUP
+   compiles no errors   [5 pts.]    5 pts.
+   runs no errors       [5 pts.]    5 pts.
+MAKENBOC.C
+   compiles no errors   [5 pts.]    5 pts.
+   uses previous func.  [5 pts.]    5 pts.
+   tester compiles      [5 pts.]    4 pts.
+   tester runs          [5 pts.]    0 pts.
+   output correct       [3 pts.]    3 pts.
+MAKENBO.NASM
+   nasm file assembles  [5 pts.]    4 pts.
+   link all files OK    [5 pts.]    3 pts.
+   calls "C" function   [5 pts.]    5 pts.
+   output correct       [3 pts.]    2 pts.
+
+Total possible points 100
+
+========================================================
+
+TOTAL EARNED POINTS:
+   you earned 81.00/100.00 which is 81% which is a B-minus
+
+========================================================
+SPECIFIC COMMENTS/FEEDBACK:
+
+problem 1 findGCD.nasm
+   got an error on linking that the gcc linker is looking for '_main' not
+      '_start'.  I changed that for you and now your program assembles and
+      links but running it gives an error "Bad system call: 12".  Should've
+      used 'printf()' functions ~ much easier and more universal.
+
+problem 2 findGCDfunc.nasm & gcdFinder.c
+   this one needed underscores in front of the function name.  I added those
+      for you and now it assembles, compiles, links, and runs fine.  There's
+      an error at the end, you get a seg fault: 11 but all the tests run.
+
+problem 3 paritygen.nasm
+   this one had some assembler errors.  most of them are because you didn't
+      put the colons after your labels.  Also, since 'byte' is a keyword, I
+      changed it to 'mbyte'.  also, added 'rel' to line 15 to use relative.
+      I spoke about this in class.  Now it assembles and links, but running
+      it gives a "Bad system call: 12" error.  Shoulda used "printf()".
+
+problem 4 whichEndIsUp.c
+   perfect!
+
+problem 5 makeNBOC.c & makeNBOCtest.c
+   makeNBOC.c compiles
+   makeNBOtest.c compiles but won't link.  You did exactly what I said NOT TO
+      DO in class ~ #included a "C" source file.  This gives you a duplicate
+      symbol error when you link.  I fixed it for you but it costs you.  Then
+      you needed to #include <stdint.h> and specifically put in the prototype
+      for your function.  I did those for you as well, now it compiles, links,
+      and runs fine.
+
+problem 6 makeNBOC.c & makeNBON.nasm
+   make NBON.nasm didn't assemble, getting an absolute address error.  I put
+      in a 'rel' where the two lines needed it at cost.  Now it assembles,
+      but won't link without adding the underscores and changing from 'start'
+      to 'main'.  Now it assembles, compiles, and links.  Running the program
+      gives a seg fault.
+
+========================================================
+SEMESTER HOMEWORK TOTALS:
+
+   homework01 ~ 100.00% of  5 points =  5.00 points
+   homework02 ~  92.50% of  5 points =  4.63 points
+   homework03 ~  85.53% of  5 points =  4.28 points
+   homework04 ~  93.33% of  5 points =  4.67 points
+   homework05 ~  98.00% of 10 points =  9.80 points
+   homework06 ~ 100.00% of 15 points = 12.15 points
+                       semester total: 40.53 out of 45.00 = 90.07%
+                             which is an A-minus total for the homework
+
+Great work on this difficult assignment!
+
+It's been a great pleasure having you in class and I look forward to seeing
+you in future classes.  Good luck on the final!
+

@@ -9,9 +9,11 @@ section .data
     result_msg db "The GCD is: ", 0
 
 section .text
-    global _start
+;    global _start
+    global _main
 
-_start:
+;_start:
+_main:
     ; Print prompt
     mov rax, 1          ; sys_write
     mov rdi, 1          ; file descriptor (stdout)
